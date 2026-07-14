@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<nav th:fragment="navbar" class="fixed top-0 left-0 right-0 z-50 bg-background-50/95 backdrop-blur-md border-b border-background-200/50">
+    <div class="w-full px-4 md:px-8 lg:px-12">
+        <div class="flex items-center justify-between h-20 md:h-24">
+            <a href="/" class="flex items-center gap-2">
+                <span class="text-xl md:text-2xl font-semibold font-heading text-foreground-950 tracking-tight">Ounce</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-sm font-medium text-foreground-600 hover:text-foreground-950 transition-colors whitespace-nowrap tracking-wide">Ounce</a>
+                <a href="/timedeal" class="text-sm font-medium text-foreground-600 hover:text-foreground-950 transition-colors whitespace-nowrap tracking-wide ready-btn">미드나이트</a>
+                <a href="/products" class="text-sm font-medium text-foreground-600 hover:text-foreground-950 transition-colors whitespace-nowrap tracking-wide ready-btn">큐레이션</a>
+                <a href="/products" class="text-sm font-medium text-foreground-600 hover:text-foreground-950 transition-colors whitespace-nowrap tracking-wide ready-btn">베스트</a>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-4">
+
+                <!-- 로그인 상태에서만 -->
+                <div class="relative" id="user-menu-wrap" sec:authorize="isAuthenticated()">
+                    <button
+                            id="user-menu-btn"
+                            class="group flex items-center gap-3 py-1.5 pl-2 pr-3 text-sm font-medium text-slate-600 bg-white hover:bg-slate-50 border border-slate-200 rounded-full transition-all duration-200 hover:shadow-sm cursor-pointer active:scale-95"
+                    >
+                        <!-- 프로필 이미지/이니셜 영역 -->
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-indigo-500 text-white text-xs font-bold shadow-inner">U</div>
+
+                        <!-- 이름 영역 -->
+                        <span class="whitespace-nowrap text-slate-700" id="nav-user-name">사용자님</span>
+                        <i class="ri-arrow-down-s-line text-sm text-slate-400 group-hover:text-slate-600 transition-transform duration-200 group-hover:translate-y-0.5"></i>
+                    </button>
+                    <div id="user-menu" class="hidden absolute right-0 top-full mt-2 w-44 bg-background-50 border border-background-200/70 rounded-lg overflow-hidden z-50">
+                        <a href="/account" class="flex items-center gap-2 px-4 py-2.5 text-sm text-foreground-700 hover:bg-background-100 transition-colors">
+                            <i class="ri-user-line"></i> 내 계정
+                        </a>
+                        <a href="/orders" class="flex items-center gap-2 px-4 py-2.5 text-sm text-foreground-700 hover:bg-background-100 transition-colors">
+                            <i class="ri-file-list-3-line"></i> 주문 내역
+                        </a>
+                        <hr class="border-background-200/70"/>
+                        <button id="logoutBtn" class="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-accent-500 hover:bg-accent-50 transition-colors text-left cursor-pointer">
+                            <i class="ri-logout-box-r-line"></i> 로그아웃
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 비로그인 상태에서만 -->
+                <a href="/login" id="login-btn-desktop" sec:authorize="!isAuthenticated()"
+                   class="text-sm font-medium text-foreground-600 hover:text-foreground-950 transition-colors whitespace-nowrap tracking-wide">로그인</a>
+
+                <a href="/cart" class="relative w-10 h-10 flex items-center justify-center rounded-full bg-indigo-500 hover:bg-indigo-600 transition-colors">
+                    <i class="ri-shopping-cart-line text-white text-lg"></i>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center">
+                <i class="ri-menu-line text-2xl text-foreground-950"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-background-50/98 backdrop-blur-md border-t border-background-200">
+        <div class="px-4 py-4 flex flex-col gap-3">
+            <a href="/" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">Ounce</a>
+            <a href="/timedeal" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">미드나이트</a>
+            <a href="/products" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">큐레이션</a>
+            <a href="/products" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">베스트</a>
+            <hr class="border-background-200"/>
+
+            <a href="/login" id="login-btn-mobile" sec:authorize="!isAuthenticated()" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">로그인</a>
+            <a href="/account" id="account-btn-mobile" sec:authorize="isAuthenticated()" class="text-foreground-700 hover:text-foreground-950 text-sm font-medium py-2">내 계정</a>
+            <button id="logout-btn-mobile" sec:authorize="isAuthenticated()" class="text-left text-accent-500 hover:text-accent-600 text-sm font-medium py-2">로그아웃</button>
+
+            <a
+                    href="/cart"
+                    class="w-11 h-11 flex items-center justify-center rounded-full bg-indigo-600 text-white shadow-sm hover:bg-indigo-600 transition-all duration-200 active:scale-95 cursor-pointer"
+            >
+                <i class="ri-shopping-cart-line text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script th:inline="none">
+        document.addEventListener('DOMContentLoaded', function () {
+            // 모바일 메뉴 토글
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            // 유저 드롭다운 토글
+            const userBtn = document.getElementById('user-menu-btn');
+            const userMenu = document.getElementById('user-menu');
+            if (userBtn && userMenu) {
+                userBtn.addEventListener('click', () => userMenu.classList.toggle('hidden'));
+                document.addEventListener('click', (e) => {
+                    if (!userBtn.contains(e.target) && !userMenu.contains(e.target)) {
+                        userMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // 로그아웃 (서버에 요청 → 쿠키 만료)
+            const handleLogout = async function(e) {
+                e.preventDefault();
+                try {
+                    await fetch('/api/members/logout', { method: 'POST', credentials: 'include' });
+                } catch (err) {
+                    console.error("로그아웃 요청 실패:", err);
+                }
+                alert('로그아웃 되었습니다.');
+                window.location.href = '/';
+            };
+
+            // 로그인 상태면 이메일 @앞부분을 이름으로 채우기
+            fetch('/api/members/me', { credentials: 'include' })
+                .then(res => res.ok ? res.json() : null)
+                .then(data => {
+                    if (!data) return;  // 비로그인(401)이면 그냥 패스
+
+                    const namePart = data.email.split('@')[0];  // chulsoo@gmail.com → chulsoo
+
+                    // 이름 채우기
+                    const nameEl = document.getElementById('nav-user-name');
+                    if (nameEl) nameEl.textContent = namePart;
+
+                    // 아바타 글자도 첫 글자로
+                    const avatarEl = document.querySelector('#user-menu-btn .rounded-full');
+                    if (avatarEl) avatarEl.textContent = namePart.charAt(0).toUpperCase();
+                })
+                .catch(err => console.error('유저 정보 조회 실패:', err));
+
+            const logoutBtn = document.getElementById('logoutBtn');
+            const logoutBtnMobile = document.getElementById('logout-btn-mobile');
+            if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+            if (logoutBtnMobile) logoutBtnMobile.addEventListener('click', handleLogout);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.ready-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault(); // 404 페이지로 넘어가는 것을 차단!
+                    alert("🚧 현재 22시 타임딜 대규모 트래픽 방어를 위해 '주문 및 결제 아키텍처'를 치열하게 튜닝 중입니다. 곧 정식 오픈됩니다!");
+                });
+            });
+        });
+    </script>
+
+</nav>
+
+</body>
+</html>
