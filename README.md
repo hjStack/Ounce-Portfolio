@@ -4,7 +4,7 @@
 ---
 
 ## 🚀 1. 프로젝트 개요
-* **서비스명**: Ounce (오운스)
+* **서비스명**: Ounce 
 * **개발 목적**: 대규모 타임딜 트래픽 상황에서 서버 안정성을 확보하고, 사용자 맞춤형 제철 식재료를 제안하는 MVP(Minimum Viable Product)를 빠르게 구축 및 검증하는 것을 목적으로 합니다.
 * **배포 주소**: [https://ouncefresh.com](https://ouncefresh.com)
 
