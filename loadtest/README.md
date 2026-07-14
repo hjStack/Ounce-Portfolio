@@ -24,4 +24,5 @@
   (EC2 단일 인스턴스)에 있음을 확인. 스케일 아웃/커넥션 풀 튜닝을 다음 과제로 도출.
 
 ## 결과 캡처
-- result-loadtest.png : k6 결과(order_success 100) 및 최종 재고 0
+- result-loadtest.png : k6 결과 (order_success 100)
+- result-redis.png : 최종 재고 0 확인
