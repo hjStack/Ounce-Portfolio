@@ -16,7 +16,7 @@
 * **Core**: Java 17, Spring Boot, Spring Data JPA
 * **Security**: Spring Security (Session/Cookie 기반 인증)
 * **Database**: MySQL (AWS RDS)
-* **Caching & Concurrency**: Redis (예정)
+* **Caching & Concurrency**: Redis 
 * **View**: HTML5, Thymeleaf, Tailwind CSS, Vanilla JS
 * **Infrastructure**: AWS EC2, GitHub Actions (CI/CD)
 
