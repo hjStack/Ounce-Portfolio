@@ -13,7 +13,7 @@
 ## 🛠️ 2. Tech Stack & Architecture
 
 ### Backend & Frontend
-* **Core**: Java 17, Spring Boot, Spring Data JPA
+* **Core**: Java 21, Spring Boot, Spring Data JPA
 * **Security**: Spring Security (Session/Cookie 기반 인증)
 * **Database**: MySQL (AWS RDS)
 * **Caching & Concurrency**: Redis
