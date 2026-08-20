@@ -1,11 +1,11 @@
 # 🍊 Ounce 
-> **"당신의 아침을 디자인합니다."** 매일 밤 10시, 한정된 수량의 제철 식재료를 특별한 가격에 만나는 미드나이트 타임딜 & 큐레이션 서비스
+> **"당신의 아침을 디자인합니다."** 매일 밤 10시, 한정된 수량의 밀키트를 특별한 가격에 만나는 미드나이트 타임딜 & 큐레이션 서비스
 
 ---
 
 ## 🚀 1. 프로젝트 개요
 * **서비스명**: Ounce 
-* **개발 목적**: 대규모 타임딜 트래픽 상황에서 서버 안정성을 확보하고, 사용자 맞춤형 제철 식재료를 제안하는 MVP(Minimum Viable Product)를 빠르게 구축 및 검증하는 것을 목적으로 합니다.
+* **개발 목적**: 1인 가구를 위한 맞춤형 밀키트 플랫폼으로, 대규모 타임딜 트래픽 상황에서도 안정적인 서비스를 제공하는 것을 목표로 합니다.
 * **배포 주소**: [https://ouncefresh.com](https://ouncefresh.com)
 
 ---
@@ -15,7 +15,7 @@
 ### Backend & Frontend
 * **Core**: Java 21, Spring Boot, Spring Data JPA
 * **Security**: Spring Security (Session/Cookie 기반 인증)
-* **Database**: MySQL (AWS RDS)
+* **Database**: MySQL 
 * **Caching & Concurrency**: Redis
 * **Infrastructure**: AWS EC2, GitHub Actions (CI/CD)
 
