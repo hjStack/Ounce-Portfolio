@@ -150,7 +150,9 @@
 **해결** — GitHub Actions와 Nginx 기반 Blue/Green 배포를 구성했습니다. `app-blue` / `app-green` 두 컨테이너를 두고, 신규 버전의 헬스체크 통과를 확인한 뒤 트래픽을 전환합니다.
 **트러블슈팅** — 구성 직후 배포 중 502가 간헐적으로 발생했습니다. nginx reload 시점과 신규 컨테이너 기동 완료 시점의 순서 문제였고, 전환 순서를 조정해 해결했습니다. 인프라 복잡도는 늘었지만 배포 리스크와 사용자 영향도를 줄이는 트레이드오프를 택했습니다.
 
-📄 [배포 워크플로우](./snippets/deploy.yml)
+📄 [백엔드 배포 워크플로우](./snippets/backend/deploy.yml)
+<br/>
+📄 [프론트엔드 배포 워크플로우](./snippets/frontend/deploy.yml)
 
 ---
 
