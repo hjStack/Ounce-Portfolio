@@ -108,7 +108,7 @@
 | 최종 Redis 재고 | 0 |
 | 초과판매 | 0건 |
 
-📄 [Lua 스크립트](./snippets/stock-deduct.lua) · [k6 스크립트](./loadtest/k6-timedeal.js)
+📄 [부하 테스트 결과](./loadtest/load-test.png) 
 
 ---
 
